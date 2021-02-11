@@ -8,4 +8,4 @@ You can do conversions by two ways, by the namespace Base64:: or by declaring th
 
 If you are going to do alot of conversions its best to declare the class so only 1 allocation of the encoding and decoding is done
 
-You can also use the Base64::ToBase64(std::string) and Base64::FromBase64(std::string) to perform the operation from a single function but the tables are allocated each function call so it is best to use the single functions when calling it only or twice
+You can also use the B64::ToBase64(std::string) and B64::FromBase64(std::string) to perform the operation from a single function but the tables are allocated each function call so it is best to use the single functions when calling it only or twice
