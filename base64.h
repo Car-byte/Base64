@@ -56,7 +56,7 @@ public:
 
 			if (i + 1 < str.size()) {
 
-				output[1] = m_encoding_table[(int)(((str[i] & 3) << 4) | (str[i + 1] >> 4))];
+				output[1] = m_encoding_table[(int)(((str[i] & 3) << 4) | ((str[i + 1] & 255) >> 4))];
 				output[2] = m_encoding_table[(int)((str[i + 1] & 15) << 2)];
 				output[3] = '=';
 			}
@@ -126,9 +126,9 @@ namespace B64 {
 
 			char output[4];
 
-			output[0] = encoding_table[(int)(str[i] >> 2)];
-			output[1] = encoding_table[(int)(((str[i] & 3) << 4) | (str[i + 1] >> 4))];
-			output[2] = encoding_table[(int)(((str[i + 1] & 15) << 2) | (str[i + 2] >> 6))];
+			output[0] = encoding_table[(int)((str[i] & 255) >> 2)];
+			output[1] = encoding_table[(int)(((str[i] & 3) << 4) | ((str[i + 1] & 255) >> 4))];
+			output[2] = encoding_table[(int)(((str[i + 1] & 15) << 2) | ((str[i + 2] & 255) >> 6))];
 			output[3] = encoding_table[(int)(str[i + 2] & 63)];
 
 			converted += output[0];
